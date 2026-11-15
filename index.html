@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Tracker Dashboard — Wajahat Irfan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Job Tracker Dashboard</h1>
+      <p class="subtitle">Track your job applications locally — data stays in your browser.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats" id="stats" aria-label="Application counts">
+      <div class="stat-card"><span class="stat-number" id="countTotal">0</span><span class="stat-label">Total applications</span></div>
+      <div class="stat-card"><span class="stat-number" id="countApplied">0</span><span class="stat-label">Applied</span></div>
+      <div class="stat-card"><span class="stat-number" id="countInterview">0</span><span class="stat-label">Interviews</span></div>
+      <div class="stat-card"><span class="stat-number" id="countOffer">0</span><span class="stat-label">Offers</span></div>
+      <div class="stat-card"><span class="stat-number" id="countRejected">0</span><span class="stat-label">Rejected</span></div>
+    </section>
+
+    <section class="card">
+      <h2>Add a job application</h2>
+      <form id="jobForm">
+        <div class="form-row">
+          <label>Company
+            <input type="text" id="company" required maxlength="100" placeholder="e.g. Acme Tech">
+          </label>
+          <label>Role
+            <input type="text" id="role" required maxlength="100" placeholder="e.g. Cybersecurity Intern">
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Date applied
+            <input type="date" id="date" required>
+          </label>
+          <label>Status
+            <select id="status">
+              <option value="Applied">Applied</option>
+              <option value="Interview">Interview</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Offer">Offer</option>
+            </select>
+          </label>
+        </div>
+        <button type="submit" class="btn">Add application</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="list-header">
+        <h2>Your applications</h2>
+        <label class="filter-label">Filter by status
+          <select id="filter">
+            <option value="All">All</option>
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Offer">Offer</option>
+          </select>
+        </label>
+      </div>
+      <p id="emptyMessage" class="empty">No applications yet. Add your first one above.</p>
+      <table id="jobTable" hidden>
+        <thead>
+          <tr><th>Company</th><th>Role</th><th>Date</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="jobList"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Wajahat Irfan — student project. Data is stored only in this browser (localStorage); no account, no server.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
